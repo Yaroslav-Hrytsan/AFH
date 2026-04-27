@@ -1,0 +1,20 @@
+# Віртуальне середовище
+venv/
+.env/
+.venv/
+
+# Кеші та тимчасові файли
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Лог-файли
+*.log
+
+# IDE та редактори
+.vscode/
+.idea/
+
+# Тестові та покриття
+.coverage
+.pytest_cache/
