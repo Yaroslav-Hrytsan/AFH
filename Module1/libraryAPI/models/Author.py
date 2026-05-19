@@ -10,4 +10,4 @@ class Author(Base):
     birth_day=Column(String, nullable=True)
     bio=Column(String, nullable=True)
 
-    books = relationship("Book", back_populates="author")
+    books = relationship("Book", back_populates="author", cascade="all, delete-orphan")

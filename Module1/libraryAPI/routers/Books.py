@@ -11,8 +11,11 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=list[BookOut])
-def read_books(db: Session = Depends(get_db)):
-    return crud.get_books(db)
+def read_books(db: Session = Depends(get_db), skip: int = 0,
+    limit: int = 10,
+    title: str | None = None,
+    category: str | None = None):
+    return crud.get_books(db, skip=skip, limit=limit, title=title, category=category)
 
 @router.get("/{book_id}", response_model=BookOut)
 def read_book(book_id: int, db: Session = Depends(get_db)):

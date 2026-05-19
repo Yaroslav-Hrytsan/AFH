@@ -11,8 +11,8 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=list[AuthorOut])
-def read_authors(db: Session = Depends(get_db)):
-    return crud.get_authors(db)
+def read_authors(name: str | None = None, db: Session = Depends(get_db)):
+    return crud.get_authors(db, name)
 
 @router.get('/{author_id}', response_model=AuthorOut)
 def read_author(author_id: int, db: Session = Depends(get_db)):
@@ -25,7 +25,7 @@ def new_author(author: AuthorCreate, db: Session = Depends(get_db)):
 
 @router.put('/{author_id}', response_model=AuthorOut)
 def update_author(author_id: int, author: AuthorUpdate, db: Session = Depends(get_db)):
-    db_author = crud.update_authors(db, author_id, author)
+    db_author = crud.update_author(db, author_id, author)
     if not db_author:
         raise HTTPException(status_code=404, detail="Author not found")
     return db_author
