@@ -18,3 +18,11 @@ __pycache__/
 # Тестові та покриття
 .coverage
 .pytest_cache/
+
+# Бази даних (SQLite, інші)
+*.sqlite3
+*.db
+
+# Системні файли
+.DS_Store
+Thumbs.db
